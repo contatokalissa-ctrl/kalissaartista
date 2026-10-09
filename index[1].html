@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Portfólio artístico de Kalissa — atriz, cantora e escritora.">
+  <title>Kalissa | Universo Artístico</title>
+  <style>
+    :root {
+      --black: #080808;
+      --black-soft: #111111;
+      --panel: #171513;
+      --gold: #d6b56d;
+      --gold-light: #f0dca5;
+      --text: #f8f4ec;
+      --muted: #c3bcb0;
+      --border: rgba(214,181,109,.36);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 78px; }
+    body { margin: 0; background: var(--black); color: var(--text); font-family: Georgia, "Times New Roman", serif; line-height: 1.7; }
+    a { color: inherit; }
+    .navigation { position: sticky; top: 0; z-index: 20; background: rgba(8,8,8,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .navigation nav { min-height: 66px; display: flex; align-items: center; justify-content: center; gap: clamp(18px,4vw,54px); padding: 14px 20px; flex-wrap: wrap; }
+    .navigation a { text-decoration: none; color: var(--gold-light); font: 600 12px/1.4 Arial,sans-serif; text-transform: uppercase; letter-spacing: .16em; transition: color .2s; }
+    .navigation a:hover, .navigation a:focus-visible { color: white; }
+    .hero { min-height: calc(100vh - 66px); padding: 66px 24px 82px; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at 78% 35%,rgba(166,124,53,.13),transparent 42%), linear-gradient(135deg,#080808,#15120c 58%,#080808); }
+    .hero-inner { width: min(1160px,100%); display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: clamp(36px,7vw,90px); }
+    .eyebrow,.section-label { color: var(--gold); text-transform: uppercase; letter-spacing: .28em; font: 600 11px/1.7 Arial,sans-serif; }
+    h1 { margin: 20px 0 18px; max-width: 720px; font-size: clamp(43px,6.4vw,82px); line-height: 1.05; letter-spacing: -.045em; font-weight: 400; }
+    h1 em { color: var(--gold-light); font-weight: 400; }
+    .tagline { margin: 0; font-size: clamp(22px,2.7vw,32px); font-style: italic; color: #eee4d0; }
+    .rule { width: 112px; height: 1px; background: linear-gradient(90deg,var(--gold),transparent); margin: 28px 0; }
+    .hero-caption { color: var(--muted); font: 11px Arial,sans-serif; letter-spacing: .19em; text-transform: uppercase; }
+    .cinema-frame { position: relative; padding: 13px; background: linear-gradient(140deg,#f3dda0,#8b682e 22%,#e9cf8b 45%,#725126 70%,#f4dfa6); box-shadow: 0 28px 90px #000; transform: rotate(.8deg); }
+    .cinema-frame:before { content: ""; position: absolute; inset: 5px; border: 1px solid #292016; pointer-events: none; z-index: 2; }
+    .cinema-frame img { display: block; width: 100%; height: min(68vh,720px); min-height: 400px; object-fit: cover; object-position: center 34%; }
+    .sprockets { display: flex; gap: 8px; justify-content: space-between; padding: 8px 1px 0; }
+    .sprockets span { flex: 1; height: 7px; border-radius: 2px; background: #20180e; }
+    section { padding: 94px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    h2 { margin: 12px 0 32px; font-weight: 400; font-size: clamp(34px,4.5vw,52px); line-height: 1.15; }
+    .bio-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: start; gap: 54px; }
+    .bio-copy { color: #e6e0d6; font-size: 18px; }
+    .bio-copy strong { color: var(--gold-light); }
+    .facts { padding: 26px 30px; border: 1px solid var(--border); background: linear-gradient(145deg,#191714,#100f0d); }
+    .facts dl { margin: 0; }
+    .facts dl div { padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.09); }
+    .facts dl div:last-child { border-bottom: 0; }
+    .facts dt { color: var(--gold); text-transform: uppercase; letter-spacing: .13em; font: 600 10px Arial,sans-serif; }
+    .facts dd { margin: 4px 0 0; color: #f2ece1; }
+    .gallery-section,.skills-section { background: #11100e; border-top: 1px solid rgba(214,181,109,.12); border-bottom: 1px solid rgba(214,181,109,.12); }
+    .gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+    .gallery-heading h2 { margin-bottom: 0; }
+    .gallery-controls { display: flex; gap: 10px; }
+    .gold-button { min-width: 44px; height: 44px; padding: 0 15px; border: 1px solid var(--gold); color: var(--gold-light); background: transparent; cursor: pointer; font-size: 22px; transition: background .2s,color .2s; }
+    .gold-button:hover,.gold-button:focus-visible { background: var(--gold); color: #080808; }
+    .gallery-track { display: flex; gap: 18px; overflow-x: auto; padding: 8px 3px 22px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-color: var(--gold) #26221b; }
+    .gallery-track img { display: block; flex: 0 0 auto; height: clamp(310px,48vw,510px); width: auto; max-width: 82vw; object-fit: cover; scroll-snap-align: center; border: 1px solid var(--gold); box-shadow: 0 12px 36px #0008; }
+    .video-section { text-align: center; }
+    .video-frame { max-width: 900px; margin: 0 auto; padding: 8px; border: 1px solid var(--gold); background: #15120d; box-shadow: 0 20px 55px #0008; }
+    .video-frame iframe { display: block; width: 100%; aspect-ratio: 16/9; border: 0; background: #000; }
+    .skills-section h2 { text-align: center; }
+    .skills-section .section-label { display: block; text-align: center; }
+    details { max-width: 850px; margin: 0 auto; background: #171512; border: 1px solid var(--gold); }
+    summary { list-style: none; display: flex; justify-content: space-between; gap: 16px; padding: 21px 25px; color: var(--gold-light); cursor: pointer; font-size: 20px; }
+    summary::-webkit-details-marker { display: none; }
+    summary:after { content: "+"; font: 25px Arial,sans-serif; color: var(--gold); }
+    details[open] summary:after { content: "−"; }
+    .skills-content { padding: 0 25px 24px; color: #e7e0d5; }
+    .skills-content p { margin: 0; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.1); }
+    .skills-content strong { color: var(--gold-light); }
+    .contact-section { text-align: center; padding-bottom: 76px; }
+    .contact-section h2 { margin-bottom: 12px; }
+    .contact-intro { color: var(--muted); font-size: 18px; margin: 0 0 28px; }
+    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+    .contact-link { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-width: 230px; padding: 13px 20px; border: 1px solid var(--gold); color: var(--gold-light); text-decoration: none; font: 600 12px Arial,sans-serif; letter-spacing: .07em; transition: background .2s,color .2s; }
+    .contact-link:hover,.contact-link:focus-visible { background: var(--gold); color: #080808; }
+    footer { padding: 23px 20px; border-top: 1px solid var(--border); text-align: center; color: var(--gold-light); font: 12px Arial,sans-serif; letter-spacing: .08em; }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 95px; }
+      .navigation nav { gap: 14px 20px; padding: 15px 10px; }
+      .navigation a { font-size: 10px; letter-spacing: .1em; }
+      .hero { padding: 48px 20px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 34px; }
+      .hero-copy { text-align: center; }
+      .rule { margin: 25px auto; }
+      .cinema-frame { width: min(100%,470px); margin: auto; }
+      .cinema-frame img { height: min(650px,125vw); min-height: 360px; }
+      section { padding: 68px 20px; }
+      .bio-grid { grid-template-columns: 1fr; gap: 26px; }
+      .gallery-track img { height: 390px; }
+      .gallery-heading h2 { font-size: 34px; }
+      .contact-link { width: 100%; max-width: 340px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html,.gallery-track { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="navigation">
+    <nav aria-label="Menu principal">
+      <a href="#biografia">Biografia</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#videos">Vídeos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="welcome-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Atriz · Cantora · Escritora</div>
+          <h1 id="welcome-title">Sejam bem-vindos ao meu <em>universo artístico!</em></h1>
+          <p class="tagline">Que comecem as cenas!</p>
+          <div class="rule"></div>
+          <div class="hero-caption">Arte · Imaginação · Histórias</div>
+        </div>
+        <div class="cinema-frame">
+          <img src="images/kalissa-cadeira.jpg" alt="Kalissa sentada em uma poltrona verde com moldura dourada">
+          <div class="sprockets" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="biografia">
+      <div class="container">
+        <div class="section-label">Prazer, sou eu</div>
+        <h2>Biografia</h2>
+        <div class="bio-grid">
+          <div class="bio-copy">
+            <p>Nascida em Fortaleza, Kalissa encontrou nas artes o seu verdadeiro norte. Movida por uma paixão profunda que inspira e preenche, ela iniciou sua trajetória artística dedicando mais de dois anos à formação intensiva em teatro, cinema e canto através da <strong>Rede Cuca</strong>, complementada por oficinas especializadas em espaços de referência como o <strong>Porto Iracema das Artes</strong> e a <strong>Caixa Cultural</strong>.</p>
+            <p>Como artista iniciante, ela está pronta para novos desafios, buscando dar vida a personagens e projetos que emocionem e marquem o público.</p>
+          </div>
+          <aside class="facts" aria-label="Informações pessoais">
+            <dl>
+              <div><dt>Nome</dt><dd>Kalissa</dd></div>
+              <div><dt>Aniversário</dt><dd>13 de outubro</dd></div>
+              <div><dt>Nascimento</dt><dd>Fortaleza — Ceará</dd></div>
+              <div><dt>Altura</dt><dd>1,53 m</dd></div>
+              <div><dt>Instrumentos</dt><dd>Violão e teclado</dd></div>
+              <div><dt>Cor favorita</dt><dd>Preto</dd></div>
+              <div><dt>Hobbies</dt><dd>Ler e escrever</dd></div>
+              <div><dt>Livro favorito</dt><dd>Quando Chama o Coração</dd></div>
+              <div><dt>Curiosidades</dt><dd>Já leu 50 livros em um ano. Cantou pela primeira vez na igreja. Adora um bolo Red Velvet. Seu feriado favorito é o Natal. É autora independente.</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="fotos" class="gallery-section">
+      <div class="container">
+        <div class="gallery-heading">
+          <div><div class="section-label">Retratos & momentos</div><h2>Fotos</h2></div>
+          <div class="gallery-controls">
+            <button class="gold-button" id="previous-photo" type="button" aria-label="Foto anterior">‹</button>
+            <button class="gold-button" id="next-photo" type="button" aria-label="Próxima foto">›</button>
+          </div>
+        </div>
+        <div class="gallery-track" id="gallery-track" tabindex="0" aria-label="Carrossel de todas as fotos">
+          <img src="images/kalissa-cadeira.jpg" alt="Kalissa sentada em uma poltrona clássica" loading="lazy">
+          <img src="images/kalissa-retrato.jpg" alt="Retrato aproximado de Kalissa" loading="lazy">
+          <img src="images/kalissa-preto.jpg" alt="Kalissa usando vestido preto" loading="lazy">
+          <img src="images/kalissa-arvore.jpg" alt="Kalissa diante de um símbolo iluminado de árvore" loading="lazy">
+          <img src="images/kalissa-rosa.jpg" alt="Kalissa em uma escadaria decorada com flores cor-de-rosa" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="videos" class="video-section">
+      <div class="container">
+        <div class="video-frame">
+          <iframe src="https://drive.google.com/file/d/1hK9OJlHLecjJI7Gk7YD2UOYc2JlVmLK-/preview" title="Vídeo" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades" class="skills-section">
+      <div class="container">
+        <span class="section-label">Palco · câmera · criação</span>
+        <h2>Habilidades</h2>
+        <details>
+          <summary>Clique para conhecer minhas habilidades</summary>
+          <div class="skills-content">
+            <p><strong>Habilidades Musicais:</strong> Canto (Intermediário/Iniciante), Violão e Teclado.</p>
+            <p><strong>Habilidades de Atuação:</strong> Interpretação Teatral e para Cinema (Iniciante/Intermediário).</p>
+            <p><strong>Habilidades de Cinema:</strong> Atuação para Câmera (Intermediário/Iniciante), Roteiro, Vídeo e Fotografia.</p>
+            <p><strong>Habilidades de Escrita:</strong> Roteiro, Literatura e Criação de Histórias (Iniciante/Intermediário).</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="contato" class="contact-section">
+      <div class="container">
+        <div class="section-label">Vamos conversar</div>
+        <h2>Contato</h2>
+        <p class="contact-intro">Para oportunidades e projetos artísticos.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:contatokalissa@gmail.com" aria-label="Enviar e-mail para contatokalissa@gmail.com">✉ E-MAIL</a>
+          <a class="contact-link" href="https://wa.me/85984660949" target="_blank" rel="noopener noreferrer" aria-label="Conversar pelo WhatsApp">☏ TELEFONE / WHATSAPP</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Kalissa</footer>
+  <script>
+    const gallery = document.getElementById('gallery-track');
+    document.getElementById('previous-photo').addEventListener('click', () => {
+      gallery.scrollBy({ left: -Math.min(gallery.clientWidth * 0.8, 520), behavior: 'smooth' });
+    });
+    document.getElementById('next-photo').addEventListener('click', () => {
+      gallery.scrollBy({ left: Math.min(gallery.clientWidth * 0.8, 520), behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
